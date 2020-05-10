@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/blogDetail.css">
+    <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
+   
+    
+</head>
+<body>
+    <header class="header">
+        <div class="header_content" id="search">
+            <span>Kenne个人博客 | 技术博客</span>
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="/map.html">地图</a></li>
+                <li><a href="/about.html">关于</a></li>
+                <li><a href="/comment.html">留言</a></li>
+            </ul>
+            <input type="text" placeholder="输入关键词查找" v-model="search"/>
+            <button v-on:click="sendSearch">搜索</button>
+        </div>   
+        <div class="content">
+            <div class="content-left">
+                <div id="blogDetail">
+                    <h1>{{title}}</h1>
+                    <span>作者: panda 发布于: {{ctime}} 浏览({{views}})</span>
+                    <div id="blog_content" >{{content}}</div>
+                </div>
+
+                <div class="blog_comments" id="blog_comments">
+                    <span class="blog_comments_msg">当前文章：{{total}} 条留言</span>
+                    <div class="blog_comment" v-for="comment in comments">
+                        <span>
+                            <b>{{comment.user_name}}</b>
+                            ：{{comment.options}} 发表于 {{comment.ctime}} 
+                            <a style="cursor: pointer" v-on:click="replay(comment.id, comment.user_name)" >[回复]</a>
+                        </span>
+                        <div>{{comment.content}}</div>
+                    </div>
+                </div>
+
+                <div id="blogComment">
+                    <div class="send_comment" id="send_comment">
+                        <span>发表评论</span>
+                        <div>
+                            <input type="hidden" id="comment_reply" value="-1">
+                            <input type="hidden" id="comment_reply_name" value="0">
+                            <input type="text" placeholder="昵称" id="comment_name">
+                            <input type="text" placeholder="邮箱（评论被回复时你能收到通知）" id="comment_email">
+                        </div>
+                        <div>
+                            <textarea placeholder="无意义的内容我可能不会回复你" id="comment_content"></textarea>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="验证码" id="comment_code">
+                            <span v-html="vcode" ></span>
+                        </div>
+                        <button v-on:click="sendMessage()">提交评论</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="content-right">
+               <div id="tags_cloud">
+                   <span>随机标签云</span>
+                   <div>
+                       <a href="/">的挖掘到东</a>
+                   </div>
+               </div>
+               <div id="hot_blog">
+                   <span>最近热门</span>
+                   <ul>
+                       <li><a href="/">大家的评价爱普生大家安排圣诞节奥胖打扫街道</a></li>
+                   </ul>
+               </div>
+            </div>
+        </div>
+    </header>
+    <div></div>
+    <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/blogDetail.js"></script>
+    <script src="./js/blogComment.js"></script>
+</body>
+</html>

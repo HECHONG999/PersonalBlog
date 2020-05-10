@@ -1,0 +1,103 @@
+@font-face {
+    font-family: "Panda";
+    src: url("../font/glyphicons-halflings-regular.woff2");
+}
+
+#everyDay {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    margin: 20px  0px 0px 0px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 10px 0  10px 10px;
+    background: #fff;
+}
+
+.everyDayTitle {
+    font-size: 12px;
+}
+.everyDayTitle::before{
+    position: absolute;
+    left: 65px;
+    top: 15px;
+    font-family: Panda;
+    content: "\e122";
+}
+
+#blogList{
+    position: relative;
+    width:100%;
+    margin: 20px 0px 0px 0px;
+}
+
+#blogList ul{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+#blogList ul li {
+    width: 100%;
+    position: relative;
+    list-style: none;
+    background: #fff;
+    margin: 20px 0px 0px 0px;
+    /* padding: 0px 0px 50px 10px; */
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-color: #bfbfbf #8e8e8e #5f5f5f #bfbfbf;
+}
+#blogList > ul > li > span {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+    padding: 10px 10px 10px 10px;
+    font-size: 20px;
+    cursor: pointer ;
+}
+
+#blogList > ul > li > p{
+    position: relative;
+    display: inline-block;
+    width: 96%;
+    padding: 10px 0px 10px 10px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+
+#blogList > ul > li >div {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background: #333333;
+    margin-top: 3px;
+    margin-left: -1px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding: 5px 1px 5px 1px;
+    box-sizing: content-box;
+    color: #fff;
+    font-size: 14px;
+}
+
+#blogList > ul > li > div > span {
+    padding: 0px 10px 0px 10px;
+}
+
+
+#blogList > ul.tag li {
+    display: inline-block;
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+#blogList > ul.tag li:hover{
+    background: #8e8e8e;
+}

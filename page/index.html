@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header_content" id="search">
+            <span>Kenne个人博客 | 技术博客</span>
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="/map.html">地图</a></li>
+                <li><a href="/about.html">关于</a></li>
+                <li><a href="/comment.html">留言</a></li>
+            </ul>
+            <input type="text" placeholder="输入关键词查找" v-model="search"/>
+            <button v-on:click="sendSearch">搜索</button>
+        </div>   
+        <div class="content">
+            <div class="content-left">
+                <div id="everyDay">
+                    <span class="everyDayTitle">每日一句</span>
+                    <p >{{content}}</p>
+                </div>
+                <div id="blogList">
+                    <ul>
+                        <li v-for="(item, index) in articleList"> 
+                            <span><a :href="item.link">{{item.title}}</a></span>
+                            <p>{{item.content}} </p>
+                            <div>
+                                <span>发布于:2020年1月8号 </span>
+                                <span>浏览: ( {{item.views}} )</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="tag" id="random_tags">
+                      <li v-for="(item,index) in pageNumList" :key="index" v-on:click="jumpTo(item.pagNum)">{{item.pagNum}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-right" >
+               <div id="tags_cloud">
+                   <span>随机标签云</span>
+                   <div>
+                       <a v-for="tag in tagList" :key="tag.id" :href="tag.link" v-bind:style="{color: randomColor(), fontSize: randomSize()}">{{tag.text}}</a>
+                   </div>
+               </div>
+               <div id="hot_blog">
+                   <span>最近热门</span>
+                   <ul>
+                       <li v-for="tag in hotBlogList"><a :href="tag.link">{{tag.title}}</a></li>
+                   </ul>
+               </div>
+               <div class="newComment" id="newComment">
+                   <div class="sub_title">最新评论</div>
+                   <ul>
+                       <li v-for="item in newCommentList">
+                           <div>
+                               <span>{{item.content}}</span>
+                               <span>{{item.time}}</span>
+                           </div>
+                       </li>
+                   </ul>
+               </div>
+               <div class=""></div>
+            </div>
+        </div>
+    </header>
+    <div></div>
+    <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="./js/index.js"></script>
+    <!-- <script type="module" src="./util/getNowTime.js"></script> -->
+    <script type="module" src="./js/base.js"></script>
+</body>
+</html>
