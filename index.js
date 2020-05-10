@@ -23,7 +23,7 @@ app.get("/queryHotBlog", loader.get("/queryHotBlog"));
 app.get("/queryNewComment", loader.get("/queryNewComment"))
 app.use(express.static("./page/"));
 
-app.listen(globalConfig.port,  function ( ) {
+app.listen("12306",  function ( ) {
     console.log("服务已经启动")
 })
 
